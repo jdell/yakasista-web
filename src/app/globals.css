@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Light mode only, by design. */
+:root {
+  --brand: #0369a1;
+  --brand-soft: #e6f1f8;
+  --ink: #14202e;
+  --muted: #5b6673;
+  --line: #dde3ea;
+  --canvas: #f5f7fa;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-canvas: var(--canvas);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--ink);
+}
