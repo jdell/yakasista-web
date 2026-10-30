@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
-import { PhoneShot, ScreenshotStage } from "@/components/ui";
+import { MapStage, ReportPreviewStage } from "@/components/showcase";
 
 const PRODUCTS = [
   {
@@ -49,36 +48,14 @@ export default function Home() {
           </Link>
         </div>
 
-        <ScreenshotStage className="mt-14 h-[420px] text-left">
-          {/* Desktop view, angled, left of centre */}
-          <div className="absolute top-12 left-[4%] w-[86%] -rotate-2 overflow-hidden rounded-2xl border border-black/10 shadow-xl md:top-14 md:left-[10%] md:w-[62%]">
-            <Image
-              src="/screenshots/villagewatch-desktop.png"
-              alt="VillageWatch on a laptop: the village map with recent reports listed beside it"
-              width={1280}
-              height={720}
-              sizes="(min-width: 768px) 62vw, 86vw"
-              priority
-              className="h-auto w-full"
-            />
-          </div>
-          {/* Phone view, angled, right, overlapping */}
-          <PhoneShot
-            src="/screenshots/villagewatch-phone.png"
-            alt="VillageWatch on a phone: the same map"
-            width={150}
-            intrinsic={[375, 812]}
-            priority
-            className="absolute right-[5%] bottom-[-90px] rotate-6 md:right-[12%] md:bottom-[-150px] md:w-[200px]!"
-          />
-          <span className="caption absolute bottom-4 left-5 rounded-full bg-card/90 px-3 py-1.5">VillageWatch · demo data</span>
-        </ScreenshotStage>
+        <ReportPreviewStage className="mt-14" />
       </section>
 
       {/* Products — 88px 64px, two columns, 64px gap */}
       <section id="products" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-16 md:px-16 md:py-[88px]">
         <p className="caption">Our products</p>
-        <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-16">
+        <MapStage className="mt-8" />
+        <div className="mt-16 grid gap-10 md:grid-cols-2 md:gap-16">
           {PRODUCTS.map((p) => (
             <article key={p.name} className="flex flex-col rounded-[30px] border border-line bg-card p-8 sm:p-10">
               <p className="flex items-center gap-3">
