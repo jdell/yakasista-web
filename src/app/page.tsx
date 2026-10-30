@@ -3,7 +3,6 @@ import Image from "next/image";
 const EMAIL = "info@yakasista.com";
 const COMPANY_NUMBER = "15295324";
 const ICO_NUMBER = "ZC233685";
-const REGISTERED_OFFICE = "53 Home Close, Cambridge, CB24 9JL";
 
 const PRODUCTS = [
   {
@@ -189,8 +188,11 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Statutory trading disclosure (Companies (Trading Disclosures) Regulations 2015):
-          name, part of the UK registered in, number and registered office must be on the site. */}
+      {/* Trading disclosure: company name, England & Wales, company number.
+          The registered office address is deliberately not shown (owner's
+          decision: it is a home address). The 2015 Trading Disclosures Regs
+          expect it on the site — add a registered office service address here
+          if one is taken on. */}
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-start sm:justify-between">
           <Lockup size="sm" />
@@ -199,7 +201,7 @@ export default function Home() {
             <span>
               Company No. {COMPANY_NUMBER} · ICO Registration: {ICO_NUMBER}
             </span>
-            <span>Registered office: {REGISTERED_OFFICE}</span>
+            <span>Cambridge, United Kingdom</span>
           </div>
         </div>
       </footer>
