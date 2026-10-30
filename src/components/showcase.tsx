@@ -6,7 +6,7 @@ import { cn } from "@/components/cn";
 
 /**
  * A supplied product image. Drop a file at public/images/vw-map.png and
- * redeploy: it replaces the screenshots below, in the hero and in Products.
+ * redeploy: it replaces the hero screenshots below.
  * Checked at build time (these pages are static).
  */
 function supplied(file: string) {
@@ -23,13 +23,13 @@ function SuppliedImage({ src, alt }: { src: string; alt: string }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* The village map — hero and Products                                 */
+/* The village map — the home page's one image, in the hero            */
 /* ------------------------------------------------------------------ */
 
 /**
  * VillageWatch's map in dark mode — its own demo-data screenshots, desktop
- * and phone overlapping. Used in the hero (420px, #dfe7dc) and in Products
- * (taller, lighter green-grey), so the two read as one look.
+ * and phone overlapping. The hero's image (420px, #dfe7dc); the "products"
+ * variant (taller, lighter green-grey) is not used on the home page.
  */
 export function MapStage({ variant = "products", className }: { variant?: "hero" | "products"; className?: string }) {
   const src = supplied("vw-map.png");

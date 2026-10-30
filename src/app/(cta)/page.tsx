@@ -54,8 +54,7 @@ export default function Home() {
       {/* Products — 88px 64px, two columns, 64px gap */}
       <section id="products" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-16 md:px-16 md:py-[88px]">
         <p className="caption">Our products</p>
-        <MapStage className="mt-8" />
-        <div className="mt-16 grid gap-10 md:grid-cols-2 md:gap-16">
+        <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-16">
           {PRODUCTS.map((p) => (
             <article key={p.name} className="flex flex-col rounded-[30px] border border-line bg-card p-8 sm:p-10">
               <p className="flex items-center gap-3">
