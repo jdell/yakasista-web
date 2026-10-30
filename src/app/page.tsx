@@ -4,7 +4,17 @@ const EMAIL = "info@yakasista.com";
 const COMPANY_NUMBER = "15295324";
 const ICO_NUMBER = "ZC233685";
 
-const PRODUCTS = [
+type Product = {
+  name: string;
+  tagline: string;
+  body: string;
+  status: "Live" | "Coming soon";
+  /** Omit for products with nowhere public to link yet. */
+  href?: string;
+  linkLabel?: string;
+};
+
+const PRODUCTS: Product[] = [
   {
     name: "VillageWatch",
     tagline: "Community safety reporting",
@@ -22,20 +32,16 @@ const PRODUCTS = [
     linkLabel: "Coming soon at clerkly.app",
   },
   {
-    name: "AI Exercise Manager",
+    name: "PromptClass",
     tagline: "Classroom app for teaching prompt engineering",
-    body: "Students write and test prompts, AI scores each submission against a rubric in seconds, and teachers review every score before a student moves on. Five progressive exercises, from clear prompts to prompt debugging.",
-    status: "Open source",
-    // Self-hosted per school on Firebase, so there is no live URL to link.
-    href: "https://github.com/jdell/ai-exercise-manager",
-    linkLabel: "View on GitHub",
+    body: "Students write and test prompts, AI scores each submission against a rubric, and teachers review before progression unlocks. Five exercises from clear prompts to prompt debugging.",
+    status: "Coming soon",
   },
 ];
 
-const STATUS_STYLE: Record<string, string> = {
+const STATUS_STYLE: Record<Product["status"], string> = {
   Live: "bg-emerald-50 text-emerald-700",
   "Coming soon": "bg-brand-soft text-brand",
-  "Open source": "bg-canvas text-ink ring-1 ring-line",
 };
 
 /** The Yakasista mark (from the original holding site), 280 × 450. */
@@ -127,9 +133,11 @@ export default function Home() {
                   </div>
                   <p className="mt-1 text-sm font-medium text-brand">{p.tagline}</p>
                   <p className="mt-4 flex-1 leading-relaxed text-muted">{p.body}</p>
-                  <a href={p.href} className="mt-6 text-sm font-medium text-brand hover:underline" rel="noopener">
-                    {p.linkLabel} →
-                  </a>
+                  {p.href && (
+                    <a href={p.href} className="mt-6 text-sm font-medium text-brand hover:underline" rel="noopener">
+                      {p.linkLabel} →
+                    </a>
+                  )}
                 </article>
               ))}
             </div>
