@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapStage, ReportPreviewStage } from "@/components/showcase";
+import { MapStage } from "@/components/showcase";
 
 const PRODUCTS = [
   {
@@ -48,7 +48,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <ReportPreviewStage className="mt-14" />
+        <MapStage variant="hero" className="mt-14" />
       </section>
 
       {/* Products — 88px 64px, two columns, 64px gap */}
@@ -67,7 +67,7 @@ export default function Home() {
               </p>
               <h2 className="mt-5 font-serif text-[clamp(34px,4vw,48px)] leading-[1.08] tracking-tight">{p.line}</h2>
               <p className="mt-5 flex-1 leading-relaxed text-sage">{p.body}</p>
-              <a href={p.href} rel="noopener" className={`mt-8 font-medium hover:underline ${p.tone}`}>
+              <a href={p.href} target="_blank" rel="noopener noreferrer" className={`mt-8 font-medium hover:underline ${p.tone}`}>
                 {p.linkLabel} →
               </a>
             </article>
