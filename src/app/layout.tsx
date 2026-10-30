@@ -8,12 +8,12 @@ const notoSerif = Noto_Serif_JP({ variable: "--font-noto-serif", subsets: ["lati
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yakasista.com"),
-  title: "Yakasista Ltd — Software for community safety and local government",
+  title: "Yakasista Ltd — AI-powered software for communities",
   description:
-    "Yakasista Ltd is a UK software company in Cambridge building AI-powered tools that help communities report, coordinate and stay safe.",
+    "Yakasista Ltd is a UK software company in Cambridge building AI-powered tools for community safety, local government and education.",
   openGraph: {
     title: "Yakasista Ltd",
-    description: "Software for community safety and local government.",
+    description: "AI-powered software for communities.",
     url: "https://yakasista.com",
     siteName: "Yakasista Ltd",
     locale: "en_GB",

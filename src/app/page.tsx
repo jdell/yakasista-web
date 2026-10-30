@@ -11,7 +11,7 @@ const PRODUCTS = [
     body: "Residents report what they see. AI anonymises each report and categorises it, incidents are mapped, and residents are alerted.",
     status: "Live",
     href: "https://villagewatch.app",
-    domain: "villagewatch.app",
+    linkLabel: "Visit villagewatch.app",
   },
   {
     name: "Clerkly",
@@ -19,9 +19,24 @@ const PRODUCTS = [
     body: "Records council meetings and drafts minutes in statutory format, ready for the clerk to check and approve.",
     status: "Coming soon",
     href: "https://clerkly.app",
-    domain: "clerkly.app",
+    linkLabel: "Coming soon at clerkly.app",
+  },
+  {
+    name: "AI Exercise Manager",
+    tagline: "Classroom app for teaching prompt engineering",
+    body: "Students write and test prompts, AI scores each submission against a rubric in seconds, and teachers review every score before a student moves on. Five progressive exercises, from clear prompts to prompt debugging.",
+    status: "Open source",
+    // Self-hosted per school on Firebase, so there is no live URL to link.
+    href: "https://github.com/jdell/ai-exercise-manager",
+    linkLabel: "View on GitHub",
   },
 ];
+
+const STATUS_STYLE: Record<string, string> = {
+  Live: "bg-emerald-50 text-emerald-700",
+  "Coming soon": "bg-brand-soft text-brand",
+  "Open source": "bg-canvas text-ink ring-1 ring-line",
+};
 
 /** The Yakasista mark (from the original holding site), 280 × 450. */
 function Mark({ height = 32 }: { height?: number }) {
@@ -81,7 +96,7 @@ export default function Home() {
             <p className="text-sm font-medium tracking-wide text-brand">Cambridge, United Kingdom</p>
             <h1 className="mt-4 text-5xl font-semibold tracking-tight sm:text-6xl">Yakasista Ltd</h1>
             <p className="mt-5 max-w-2xl text-2xl font-medium text-ink sm:text-3xl">
-              Software for community safety and local government
+              AI-powered software for communities
             </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
               We build AI-powered tools that help communities report, coordinate, and stay safe.
@@ -101,25 +116,19 @@ export default function Home() {
         <section id="products" className="scroll-mt-16">
           <div className="mx-auto max-w-5xl px-5 py-20">
             <h2 className="text-3xl font-semibold tracking-tight">Products</h2>
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {PRODUCTS.map((p) => (
                 <article key={p.name} className="flex flex-col rounded-xl border border-line p-7">
                   <div className="flex items-center justify-between gap-3">
                     <h3 className="text-xl font-semibold">{p.name}</h3>
-                    <span
-                      className={
-                        p.status === "Live"
-                          ? "rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700"
-                          : "rounded-full bg-brand-soft px-2.5 py-1 text-xs font-medium text-brand"
-                      }
-                    >
+                    <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap ${STATUS_STYLE[p.status]}`}>
                       {p.status}
                     </span>
                   </div>
                   <p className="mt-1 text-sm font-medium text-brand">{p.tagline}</p>
                   <p className="mt-4 flex-1 leading-relaxed text-muted">{p.body}</p>
                   <a href={p.href} className="mt-6 text-sm font-medium text-brand hover:underline" rel="noopener">
-                    {p.status === "Live" ? "Visit" : "Coming soon at"} {p.domain} →
+                    {p.linkLabel} →
                   </a>
                 </article>
               ))}
