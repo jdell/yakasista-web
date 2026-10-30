@@ -45,7 +45,8 @@ export default function About() {
           ))}
         </dl>
       </div>
-      <Photo label="Cambridge rooftops" arch className="h-[460px] lg:h-[560px]" />
+      {/* Placeholder until assets/bradfield-centre.png is supplied — drop it in public/ and swap this for next/image. */}
+      <Photo label="The Bradfield Centre, Cambridge Science Park" arch className="h-[460px] lg:h-[560px]" />
     </section>
   );
 }

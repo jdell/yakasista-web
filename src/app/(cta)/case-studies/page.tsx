@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageIntro, Photo } from "@/components/ui";
+import { PageIntro, PhoneShot, ScreenshotStage } from "@/components/ui";
 
 export const metadata: Metadata = { title: "Case studies" };
 
@@ -28,7 +28,17 @@ export default function CaseStudies() {
             </li>
           ))}
         </ol>
-        <Photo label="A quiet high street" className="h-[420px] lg:sticky lg:top-24 lg:h-[520px]" />
+        <ScreenshotStage className="flex h-[480px] items-start justify-center pt-10 lg:sticky lg:top-24">
+          <PhoneShot
+            src="/screenshots/villagewatch-report.png"
+            alt="A published VillageWatch report on a phone, marked as anonymised before publishing"
+            width={230}
+            intrinsic={[1206, 2622]}
+            priority
+            className="-rotate-2"
+          />
+          <span className="caption absolute bottom-4 left-5 rounded-full bg-card/90 px-3 py-1.5">VillageWatch · demo data</span>
+        </ScreenshotStage>
       </div>
       <p className="mt-12 rounded-[28px] border border-dashed border-line px-6 py-5 text-sage">
         <span className="caption mr-3">Note</span>

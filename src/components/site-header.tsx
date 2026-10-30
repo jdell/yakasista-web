@@ -6,7 +6,6 @@ export const NAV = [
   { href: "/services", label: "Services" },
   { href: "/case-studies", label: "Case studies" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
 ];
 
 /** Sticky frosted header. Full nav from md up; a dropdown menu below. */

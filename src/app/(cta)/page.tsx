@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Photo } from "@/components/ui";
+import Image from "next/image";
+import { PhoneShot, ScreenshotStage } from "@/components/ui";
 
 const PRODUCTS = [
   {
@@ -48,7 +49,30 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <Photo label="Village green at dusk" className="h-[420px]" />
+        <ScreenshotStage className="h-[380px] sm:h-[460px]">
+          {/* Desktop view, angled, left */}
+          <div className="absolute top-10 -left-6 w-[88%] -rotate-3 overflow-hidden rounded-2xl border border-black/10 shadow-xl sm:top-12 sm:w-[82%]">
+            <Image
+              src="/screenshots/villagewatch-desktop.png"
+              alt="VillageWatch on a laptop: the village map with recent reports listed beside it"
+              width={1280}
+              height={720}
+              sizes="(min-width: 1024px) 420px, 88vw"
+              priority
+              className="h-auto w-full"
+            />
+          </div>
+          {/* Phone view, angled, right, overlapping */}
+          <PhoneShot
+            src="/screenshots/villagewatch-phone.png"
+            alt="VillageWatch on a phone: the same map"
+            width={150}
+            intrinsic={[375, 812]}
+            priority
+            className="absolute right-5 bottom-[-70px] rotate-6 sm:right-8 sm:bottom-[-40px] sm:w-[170px]!"
+          />
+          <span className="caption absolute bottom-4 left-5 rounded-full bg-card/90 px-3 py-1.5">VillageWatch · demo data</span>
+        </ScreenshotStage>
       </section>
 
       <section id="products" className="mx-auto max-w-6xl scroll-mt-20 px-5 pb-20">

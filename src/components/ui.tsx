@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/components/cn";
 
 /** Image placeholder until real photography exists: warm stripes and a caption. */
@@ -23,6 +24,28 @@ export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title
       <p className="caption">{eyebrow}</p>
       <h1 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-balance sm:text-6xl">{title}</h1>
       {children && <div className="mt-6 text-lg leading-relaxed text-sage">{children}</div>}
+    </div>
+  );
+}
+
+/** The green stage VillageWatch screenshots sit on (#dfe7dc, 32px corners). */
+export function ScreenshotStage({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <div className={cn("relative overflow-hidden rounded-[32px] bg-[#dfe7dc]", className)}>{children}</div>;
+}
+
+/** A phone screenshot in a simple device frame. `width` is the rendered width in px. */
+export function PhoneShot({ src, alt, width, intrinsic, className, priority = false }: {
+  src: string;
+  alt: string;
+  width: number;
+  intrinsic: [number, number];
+  className?: string;
+  /** Load eagerly when the shot is in view on arrival. */
+  priority?: boolean;
+}) {
+  return (
+    <div className={cn("overflow-hidden rounded-[28px] border-[6px] border-ink bg-ink shadow-2xl", className)} style={{ width }}>
+      <Image src={src} alt={alt} width={intrinsic[0]} height={intrinsic[1]} sizes={`${width}px`} priority={priority} className="h-auto w-full rounded-[22px]" />
     </div>
   );
 }
