@@ -2,9 +2,10 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { MobileMenu } from "@/components/mobile-menu";
 
+/** Case studies still exists as a route, but is deliberately not in the nav (design 2a). */
 export const NAV = [
+  { href: "/#products", label: "Products" },
   { href: "/services", label: "Services" },
-  { href: "/case-studies", label: "Case studies" },
   { href: "/about", label: "About" },
 ];
 
@@ -12,7 +13,7 @@ export const NAV = [
 export function SiteHeader() {
   return (
     <header className="frosted sticky top-0 z-40 border-b border-line">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 md:px-16">
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
           {NAV.map((n) => (
