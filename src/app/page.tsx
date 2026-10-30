@@ -1,4 +1,9 @@
+import Image from "next/image";
+
 const EMAIL = "info@yakasista.com";
+const COMPANY_NUMBER = "15295324";
+const ICO_NUMBER = "ZC233685";
+const REGISTERED_OFFICE = "53 Home Close, Cambridge, CB24 9JL";
 
 const PRODUCTS = [
   {
@@ -19,12 +24,9 @@ const PRODUCTS = [
   },
 ];
 
-function Mark() {
-  return (
-    <span className="flex size-8 items-center justify-center rounded-md bg-brand text-sm font-bold text-white" aria-hidden>
-      Y
-    </span>
-  );
+/** The Yakasista mark (from the original holding site), 280 × 450. */
+function Mark({ height = 32 }: { height?: number }) {
+  return <Image src="/logo.png" alt="" width={Math.round((height * 280) / 450)} height={height} priority />;
 }
 
 export default function Home() {
@@ -33,7 +35,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
           <a href="#top" className="flex shrink-0 items-center gap-2.5 font-semibold whitespace-nowrap">
-            <Mark />
+            <Mark height={36} />
             Yakasista Ltd
           </a>
           <nav aria-label="Main" className="flex items-center gap-0.5 text-[13px] sm:gap-1 sm:text-sm">
@@ -116,18 +118,30 @@ export default function Home() {
                 The company was founded by Joel Castro, a software engineer with more than 20 years&apos; experience
                 building and running production systems.
               </p>
-              <dl className="grid gap-4 rounded-xl border border-line bg-white p-6 text-base sm:grid-cols-3">
+              <dl className="grid gap-4 rounded-xl border border-line bg-white p-6 text-base sm:grid-cols-2">
                 <div>
                   <dt className="text-xs font-medium tracking-wide text-muted uppercase">Registered</dt>
-                  <dd className="mt-1 font-medium text-ink">United Kingdom</dd>
+                  <dd className="mt-1 font-medium text-ink">England &amp; Wales</dd>
                 </div>
                 <div>
                   <dt className="text-xs font-medium tracking-wide text-muted uppercase">Based in</dt>
-                  <dd className="mt-1 font-medium text-ink">Cambridge</dd>
+                  <dd className="mt-1 font-medium text-ink">Cambridge, United Kingdom</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-medium tracking-wide text-muted uppercase">ICO registration</dt>
-                  <dd className="mt-1 font-medium text-ink">ZC233685</dd>
+                  <dt className="text-xs font-medium tracking-wide text-muted uppercase">Company No.</dt>
+                  <dd className="mt-1 font-medium text-ink">
+                    <a
+                      href={`https://find-and-update.company-information.service.gov.uk/company/${COMPANY_NUMBER}`}
+                      className="hover:text-brand hover:underline"
+                      rel="noopener"
+                    >
+                      {COMPANY_NUMBER}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-medium tracking-wide text-muted uppercase">ICO Registration</dt>
+                  <dd className="mt-1 font-medium text-ink">{ICO_NUMBER}</dd>
                 </div>
               </dl>
             </div>
@@ -156,14 +170,39 @@ export default function Home() {
         </section>
       </main>
 
+      {/* Statutory trading disclosure (Companies (Trading Disclosures) Regulations 2015):
+          name, part of the UK registered in, number and registered office must be on the site. */}
       <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-5xl flex-col gap-2 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span className="flex items-center gap-2 font-medium text-ink">
-            <Mark /> Yakasista Ltd
+        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-start sm:justify-between">
+          <span className="flex items-center gap-2.5 font-medium text-ink">
+            <Mark height={28} /> Yakasista Ltd
           </span>
-          <span>© 2026 Yakasista Ltd · ICO ZC233685</span>
+          <div className="flex flex-col gap-1 sm:text-right">
+            <span>© 2026 Yakasista Ltd · Registered in England &amp; Wales</span>
+            <span>
+              Company No. {COMPANY_NUMBER} · ICO Registration: {ICO_NUMBER}
+            </span>
+            <span>Registered office: {REGISTERED_OFFICE}</span>
+          </div>
         </div>
       </footer>
+
+      <script
+        type="application/ld+json"
+        // Static, first-party JSON: safe to inline.
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Yakasista Ltd",
+            legalName: "Yakasista Ltd",
+            url: "https://www.yakasista.com/",
+            logo: "https://www.yakasista.com/logo.png",
+            email: EMAIL,
+            identifier: { "@type": "PropertyValue", name: "UK Company Number", value: COMPANY_NUMBER },
+          }),
+        }}
+      />
     </>
   );
 }
