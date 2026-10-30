@@ -29,14 +29,37 @@ function Mark({ height = 32 }: { height?: number }) {
   return <Image src="/logo.png" alt="" width={Math.round((height * 280) / 450)} height={height} priority />;
 }
 
+/**
+ * The logo lockup, as on the original holding site: the mark, then
+ * "YAKASISTA" in light Noto Serif JP, uppercase, widely tracked, in grey.
+ * The negative right margin cancels the trailing letter-space so the
+ * lockup sits on its glyphs.
+ */
+function Lockup({ size = "md" }: { size?: "md" | "sm" }) {
+  return (
+    <span className="flex items-center gap-2 sm:gap-3" aria-label="Yakasista Ltd">
+      <Mark height={size === "md" ? 32 : 28} />
+      <span
+        aria-hidden
+        className={
+          size === "md"
+            ? "font-serif text-[15px] font-light tracking-[4px] max-[359px]:hidden text-[#6b7280] uppercase -mr-[4px] sm:text-xl sm:tracking-[12px] sm:-mr-[12px]"
+            : "font-serif text-base font-light tracking-[8px] text-[#6b7280] uppercase -mr-[8px]"
+        }
+      >
+        Yakasista
+      </span>
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
-          <a href="#top" className="flex shrink-0 items-center gap-2.5 font-semibold whitespace-nowrap">
-            <Mark height={36} />
-            Yakasista Ltd
+        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-2 px-4 sm:px-5">
+          <a href="#top" className="shrink-0 whitespace-nowrap">
+            <Lockup />
           </a>
           <nav aria-label="Main" className="flex items-center gap-0.5 text-[13px] sm:gap-1 sm:text-sm">
             {[
@@ -44,7 +67,7 @@ export default function Home() {
               ["#products", "Products"],
               ["#contact", "Contact"],
             ].map(([href, label]) => (
-              <a key={href} href={href} className="rounded-md px-2 py-2 text-muted hover:bg-canvas hover:text-ink sm:px-3">
+              <a key={href} href={href} className="rounded-md px-1.5 py-2 text-muted hover:bg-canvas hover:text-ink sm:px-3">
                 {label}
               </a>
             ))}
@@ -111,12 +134,8 @@ export default function Home() {
             <h2 className="text-3xl font-semibold tracking-tight">About</h2>
             <div className="space-y-5 text-lg leading-relaxed text-muted">
               <p>
-                Yakasista Ltd is a UK-registered software company based in Cambridge. We design and build software
-                for community safety and local government.
-              </p>
-              <p>
-                The company was founded by Joel Castro, a software engineer with more than 20 years&apos; experience
-                building and running production systems.
+                Yakasista Ltd is a UK-registered software company based in Cambridge, building AI-powered tools for
+                local government and community organisations.
               </p>
               <dl className="grid gap-4 rounded-xl border border-line bg-white p-6 text-base sm:grid-cols-2">
                 <div>
@@ -174,9 +193,7 @@ export default function Home() {
           name, part of the UK registered in, number and registered office must be on the site. */}
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-start sm:justify-between">
-          <span className="flex items-center gap-2.5 font-medium text-ink">
-            <Mark height={28} /> Yakasista Ltd
-          </span>
+          <Lockup size="sm" />
           <div className="flex flex-col gap-1 sm:text-right">
             <span>© 2026 Yakasista Ltd · Registered in England &amp; Wales</span>
             <span>
