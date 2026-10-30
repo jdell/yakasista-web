@@ -1,25 +1,32 @@
 @import "tailwindcss";
 
-/* Light mode only, by design. */
+/* Design 2a · Warm, village green. Light only. */
 :root {
-  --brand: #0369a1;
-  --brand-soft: #e6f1f8;
-  --ink: #14202e;
-  --muted: #5b6673;
-  --line: #dde3ea;
-  --canvas: #f5f7fa;
+  --parchment: #f6f1e6;
+  --ink: #22302a;
+  --green: #2f6a4a;
+  --pine: #2f4a3a;
+  --sage: #56625a;
+  --line: #e2d9c6;
+  --card: #fffaf1;
+  --rose: #b4536a;
+  --wordmark: #5f6b63;
   color-scheme: light;
 }
 
 @theme inline {
-  --color-brand: var(--brand);
-  --color-brand-soft: var(--brand-soft);
+  --color-parchment: var(--parchment);
   --color-ink: var(--ink);
-  --color-muted: var(--muted);
+  --color-green: var(--green);
+  --color-pine: var(--pine);
+  --color-sage: var(--sage);
   --color-line: var(--line);
-  --color-canvas: var(--canvas);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-noto-serif), ui-serif, Georgia, serif;
+  --color-card: var(--card);
+  --color-rose: var(--rose);
+  --color-wordmark: var(--wordmark);
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
 html {
@@ -27,6 +34,21 @@ html {
 }
 
 body {
-  background: #ffffff;
+  background: var(--parchment);
   color: var(--ink);
+}
+
+/* Captions and small labels. */
+@utility caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+@utility frosted {
+  background-color: #f6f1e6ee;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
