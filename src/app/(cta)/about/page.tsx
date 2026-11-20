@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { PageIntro, Photo } from "@/components/ui";
+import Image from "next/image";
+import { PageIntro } from "@/components/ui";
 
 export const metadata: Metadata = { title: "About" };
 
 const FACTS = [
   ["Registered", "England & Wales"],
-  ["Based in", "Cambridge, UK"],
+  ["Based in", "The Bradfield Centre, Cambridge"],
   ["Company No.", "15295324"],
   ["ICO", "ZC233685"],
 ];
@@ -45,8 +46,16 @@ export default function About() {
           ))}
         </dl>
       </div>
-      {/* Placeholder until assets/bradfield-centre.png is supplied — drop it in public/ and swap this for next/image. */}
-      <Photo label="The Bradfield Centre, Cambridge Science Park" arch className="h-[460px] lg:h-[560px]" />
+      <div className="overflow-hidden rounded-[28px]">
+        <Image
+          src="/images/bradfield-centre.jpg"
+          alt="The Bradfield Centre, Cambridge Science Park"
+          width={800}
+          height={1000}
+          className="h-[460px] w-full object-cover lg:h-[560px]"
+          priority
+        />
+      </div>
     </section>
   );
 }

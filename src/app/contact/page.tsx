@@ -22,7 +22,11 @@ export default function Contact() {
           </div>
           <div>
             <dt className="caption">Location</dt>
-            <dd className="mt-1 font-serif text-2xl">Cambridge, United Kingdom</dd>
+            <dd className="mt-1 font-serif text-2xl">The Bradfield Centre</dd>
+            <dd className="mt-1 text-sage">
+              184 Cambridge Science Park, Milton Road<br />
+              Cambridgeshire, CB4 0GA
+            </dd>
           </div>
         </dl>
       </div>
